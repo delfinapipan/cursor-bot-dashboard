@@ -1,57 +1,57 @@
 {
-  "lastUpdated": "2026-04-24T12:35:37.853Z",
+  "lastUpdated": "2026-04-24T12:39:38.597Z",
   "squads": {
     "SQZB": {
       "sprints": [],
-      "error": "Jira 400 - /rest/agile/1.0/board/137/sprint"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQSQ": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQSH": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQRN": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQRC": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQPM": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQPD": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQOW": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQOT": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQKA": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQJG": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQGZ": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQEG": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQDP": {
       "sprints": [],
@@ -59,15 +59,15 @@
     },
     "SQXS": {
       "sprints": [],
-      "error": "Jira 400 - /rest/agile/1.0/board/83/sprint"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQCY": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     },
     "SQWH": {
       "sprints": [],
-      "error": "Sin board"
+      "error": "Jira 410 - /rest/api/3/search"
     }
   }
 }
