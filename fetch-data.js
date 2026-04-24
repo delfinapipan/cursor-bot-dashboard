@@ -26,10 +26,11 @@ async function jiraFetch(path) {
 
 async function getBoardId(squad) {
   const data = await jiraFetch(
-    `/rest/agile/1.0/board?projectKeyOrId=${squad}&type=scrum&maxResults=1`
+    `/rest/agile/1.0/board?projectKeyOrId=${squad}&maxResults=10`
   );
   if (!data.values || data.values.length === 0) return null;
-  return data.values[0].id;
+  const scrum = data.values.find(b => b.type === 'scrum');
+  return scrum ? scrum.id : data.values[0].id;
 }
 
 async function getSprints(boardId) {
@@ -54,7 +55,7 @@ async function getIssueCount(squad, sprintId, botOnly) {
 async function loadSquad(squad) {
   try {
     const boardId = await getBoardId(squad);
-    if (!boardId) return { sprints: [], error: 'Sin board Scrum' };
+    if (!boardId) return { sprints: [], error: 'Sin board' };
     const sprints = await getSprints(boardId);
     if (sprints.length === 0) return { sprints: [], error: 'Sin sprints desde Feb 2025' };
     const sprintData = await Promise.all(sprints.map(async s => {
