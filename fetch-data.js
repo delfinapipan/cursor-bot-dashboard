@@ -20,7 +20,7 @@ async function jiraFetch(path) {
   const res = await fetch(`${BASE_URL}${path}`, {
     headers: { 'Authorization': `Basic ${TOKEN}`, 'Accept': 'application/json' }
   });
-  if (!res.ok) throw new Error(`Jira ${res.status} → ${path.split('?')[0]}`);
+  if (!res.ok) throw new Error(`Jira ${res.status} - ${path.split('?')[0]}`);
   return res.json();
 }
 
@@ -55,10 +55,8 @@ async function loadSquad(squad) {
   try {
     const boardId = await getBoardId(squad);
     if (!boardId) return { sprints: [], error: 'Sin board Scrum' };
-
     const sprints = await getSprints(boardId);
     if (sprints.length === 0) return { sprints: [], error: 'Sin sprints desde Feb 2025' };
-
     const sprintData = await Promise.all(sprints.map(async s => {
       const [botCount, totalCount] = await Promise.all([
         getIssueCount(squad, s.id, true),
@@ -66,26 +64,29 @@ async function loadSquad(squad) {
       ]);
       return { id: s.id, name: s.name, startDate: s.startDate, botCount, totalCount };
     }));
-
     return { sprints: sprintData, error: null };
   } catch (err) {
-    console.error(`  ✗ ${squad}: ${err.message}`);
+    console.error(`  X ${squad}: ${err.message}`);
     return { sprints: [], error: err.message };
   }
 }
 
 (async () => {
   console.log(`Fetching data for ${SQUADS.length} squads...`);
-
   const results = await Promise.all(
     SQUADS.map(async squad => {
       const result = await loadSquad(squad);
       const count = result.sprints.reduce((s, x) => s + x.botCount, 0);
-      console.log(`  ✓ ${squad}: ${result.error || `${result.sprints.length} sprints, ${count} bot tasks`}`);
+      console.log(`  OK ${squad}: ${result.error || `${result.sprints.length} sprints, ${count} bot tasks`}`);
       return [squad, result];
     })
   );
-
   const squadData = Object.fromEntries(results);
   const output = {
     lastUpdated: new Date().toISOString(),
+    squads: squadData
+  };
+  const fs = await import('fs');
+  fs.writeFileSync('data.json', JSON.stringify(output, null, 2));
+  console.log('\ndata.json guardado correctamente.');
+})();
