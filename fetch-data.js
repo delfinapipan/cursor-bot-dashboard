@@ -10,11 +10,25 @@ const SQUADS     = [
 
 if (!TOKEN) { console.error('Falta JIRA_TOKEN'); process.exit(1); }
 
-async function jiraFetch(path) {
+async function jiraGet(path) {
   const res = await fetch(`${BASE_URL}${path}`, {
     headers: { 'Authorization': `Basic ${TOKEN}`, 'Accept': 'application/json' }
   });
   if (!res.ok) throw new Error(`Jira ${res.status} - ${path.split('?')[0]}`);
+  return res.json();
+}
+
+async function jiraSearch(jql, fields = ['id'], maxResults = 100, startAt = 0) {
+  const res = await fetch(`${BASE_URL}/rest/api/3/issue/search`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Basic ${TOKEN}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ jql, fields, maxResults, startAt })
+  });
+  if (!res.ok) throw new Error(`Jira ${res.status} - search`);
   return res.json();
 }
 
@@ -23,13 +37,10 @@ async function loadSquad(squad) {
     const cutoff = new Date(START_DATE);
     const sprintMap = new Map();
 
-    // Paginar todas las bot tasks del squad y extraer sprints
     let startAt = 0;
     while (true) {
       const jql = `project = "${squad}" AND issuetype in (Subtask, "Sub-task", "Dev Task") AND status = Done AND assignee = "${BOT_ID}"`;
-      const data = await jiraFetch(
-        `/rest/api/3/search?jql=${encodeURIComponent(jql)}&maxResults=100&startAt=${startAt}&fields=customfield_10020`
-      );
+      const data = await jiraSearch(jql, ['customfield_10020'], 100, startAt);
       for (const issue of (data.issues || [])) {
         const sprintArr = issue.fields.customfield_10020;
         if (!sprintArr || sprintArr.length === 0) continue;
@@ -46,10 +57,9 @@ async function loadSquad(squad) {
 
     if (sprintMap.size === 0) return { sprints: [], error: 'Sin tasks del bot desde Feb 2025' };
 
-    // Obtener total de tasks por sprint
     await Promise.all(Array.from(sprintMap.values()).map(async sprint => {
       const jql = `project = "${squad}" AND issuetype in (Subtask, "Sub-task", "Dev Task") AND status = Done AND sprint = ${sprint.id}`;
-      const data = await jiraFetch(`/rest/api/3/search?jql=${encodeURIComponent(jql)}&maxResults=0`);
+      const data = await jiraSearch(jql, ['id'], 0, 0);
       sprint.totalCount = data.total || 0;
     }));
 
