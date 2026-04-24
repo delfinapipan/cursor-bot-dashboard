@@ -1,57 +1,57 @@
 {
-  "lastUpdated": "2026-04-24T12:28:01.897Z",
+  "lastUpdated": "2026-04-24T12:35:37.853Z",
   "squads": {
     "SQZB": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Jira 400 - /rest/agile/1.0/board/137/sprint"
     },
     "SQSQ": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQSH": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQRN": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQRC": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQPM": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQPD": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQOW": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQOT": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQKA": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQJG": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQGZ": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQEG": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQDP": {
       "sprints": [],
@@ -59,15 +59,15 @@
     },
     "SQXS": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Jira 400 - /rest/agile/1.0/board/83/sprint"
     },
     "SQCY": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     },
     "SQWH": {
       "sprints": [],
-      "error": "Sin board Scrum"
+      "error": "Sin board"
     }
   }
 }
