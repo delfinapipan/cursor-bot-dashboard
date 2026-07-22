@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-21T18:59:26.146Z",
+  "lastUpdated": "2026-07-22T01:15:18.040Z",
   "squads": {
     "SQZB": {
       "sprints": [],
@@ -59,7 +59,7 @@
     },
     "SQXS": {
       "sprints": [],
-      "error": "fetch failed"
+      "error": "Jira 405 - search"
     },
     "SQCY": {
       "sprints": [],
