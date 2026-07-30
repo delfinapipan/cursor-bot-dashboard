@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-30T13:19:49.485Z",
+  "lastUpdated": "2026-07-30T19:04:24.489Z",
   "squads": {
     "SQZB": {
       "sprints": [],
@@ -27,7 +27,7 @@
     },
     "SQPD": {
       "sprints": [],
-      "error": "Jira 405 - search"
+      "error": "fetch failed"
     },
     "SQOW": {
       "sprints": [],
@@ -35,7 +35,7 @@
     },
     "SQOT": {
       "sprints": [],
-      "error": "Jira 405 - search"
+      "error": "fetch failed"
     },
     "SQKA": {
       "sprints": [],
@@ -55,7 +55,7 @@
     },
     "SQDP": {
       "sprints": [],
-      "error": "Jira 405 - search"
+      "error": "fetch failed"
     },
     "SQXS": {
       "sprints": [],
